@@ -1,0 +1,27 @@
+[package]
+name = "wslc_schema_rs"
+version.workspace = true
+edition.workspace = true
+readme = "README.md"
+authors.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["wsl", "serde", "json-schema", "containers"]
+categories = ["data-structures", "encoding"]
+include = ["build.rs", "src/**", "generated/**", "Cargo.toml", "README.md", "LICENSE-*"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+
+[build-dependencies]
+anyhow = "1.0"
+hex = "0.4"
+semver = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+
+[dev-dependencies]
+jsonschema = "0.33"
+serde_json = "1.0"

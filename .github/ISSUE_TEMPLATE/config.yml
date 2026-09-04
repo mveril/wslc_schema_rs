@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: WSL issues and feature requests
+    url: https://github.com/microsoft/WSL/issues
+    about: Report issues in WSL itself or request changes to its native schema there.
+

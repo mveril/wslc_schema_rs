@@ -1,0 +1,14 @@
+[workspace]
+resolver = "3"
+members = ["wslc_schema_rs", "xtask"]
+default-members = ["wslc_schema_rs"]
+
+
+[workspace.package]
+version = "0.1.0+2.9.3"
+edition = "2024"
+readme = "README.md"
+authors = ["Mickaël Véril <mika.veril@wanadoo.fr>"]
+description = "serde structures for wslc_schema"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/mveril/wslc_schema_rs"

@@ -1,0 +1,13 @@
+{
+  "source_repository": "https://github.com/microsoft/WSL.git",
+  "source_tag": "2.9.3",
+  "source_path": "src/windows/inc/wslc_schema.h",
+  "source_commit_oid": "9c8821651512f4d25516935d792a4ac91b5cc19f",
+  "source_blob_oid": "db4354ba3ff911a04254d3b7976f6f1b0d373dac",
+  "source_sha256": "cfcc438777dd246fe093286b629a8a6d1669b2501f530f86a8bda437c9f85cdf",
+  "generator_version": "0.1.0+2.9.3",
+  "typify_version": "0.6.2",
+  "schema_draft": "https://json-schema.org/draft/2020-12/schema",
+  "schema_file": "wslc_schema.schema.json",
+  "rust_file": "wslc_schema.rs"
+}

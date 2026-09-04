@@ -1,0 +1,48 @@
+[
+  {
+    "Config": {
+      "Cmd": ["/hello"],
+      "Entrypoint": null,
+      "Env": [
+        "WSLC_SCHEMA_TEST=true",
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      ],
+      "Healthcheck": null,
+      "StopTimeout": null,
+      "User": "",
+      "WorkingDir": "/"
+    },
+    "Created": "2026-09-04T18:01:39.3606947Z",
+    "HostConfig": {
+      "Memory": 67108864,
+      "NanoCpus": 500000000,
+      "NetworkMode": "wslc-schema-ut-20260904",
+      "Ulimits": [{"Hard": 2048, "Name": "nofile", "Soft": 1024}]
+    },
+    "Id": "275c57c87ef04ac769990d3b117a24e7286b5ac16e050c501664b0a2ca42ec90",
+    "Image": "hello-world:latest",
+    "Labels": {"purpose": "wslc-schema-ut"},
+    "Mounts": [],
+    "Name": "wslc-schema-ut-20260904",
+    "NetworkSettings": {
+      "Networks": {
+        "wslc-schema-ut-20260904": {
+          "Aliases": ["fixture", "275c57c87ef0", "schema-test"],
+          "Gateway": "",
+          "IPAddress": "",
+          "IPPrefixLen": 0,
+          "MacAddress": ""
+        }
+      }
+    },
+    "Ports": {"80/tcp": [{"HostIp": "127.0.0.1", "HostPort": "21582"}]},
+    "State": {
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-04T18:02:12.8725702Z",
+      "Health": null,
+      "Running": false,
+      "StartedAt": "2026-09-04T18:02:12.8710332Z",
+      "Status": "exited"
+    }
+  }
+]

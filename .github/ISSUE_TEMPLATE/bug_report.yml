@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a reproducible problem in generated types, schema validation, or generation.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include JSON, a header fragment, and commands where possible.
+      placeholder: |
+        1. Run ...
+        2. Deserialize or generate ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: wsl_version
+    attributes:
+      label: WSL version or upstream tag
+      placeholder: 2.9.3
+    validations:
+      required: true
+  - type: input
+    id: crate_version
+    attributes:
+      label: Crate version or commit
+    validations:
+      required: true
+

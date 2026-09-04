@@ -1,0 +1,30 @@
+name: Release Checks
+
+on:
+  push:
+    branches: ["release/**"]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+
+jobs:
+  release-checks:
+    if: github.event_name != 'pull_request' || startsWith(github.head_ref, 'release/')
+    runs-on: ubuntu-latest
+    env:
+      CARGO_TERM_COLOR: always
+      RELEASE_BRANCH: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Verify release branch version
+        shell: bash
+        run: |
+          expected="${RELEASE_BRANCH#release/}"
+          actual="$(cargo metadata --format-version 1 --no-deps | python3 -c 'import json,sys; print(next(p["version"] for p in json.load(sys.stdin)["packages"] if p["name"] == "wslc_schema_rs"))')"
+          test "$expected" = "$actual" || { echo "release version $expected does not match crate version $actual"; exit 1; }
+      - run: cargo test --workspace --all-features --locked
+      - run: cargo xtask check
+      - run: cargo publish -p wslc_schema_rs --dry-run --locked

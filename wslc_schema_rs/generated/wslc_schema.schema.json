@@ -1,0 +1,700 @@
+{
+  "$defs": {
+    "ContainerConfig": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Cmd": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Entrypoint": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Env": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "User": {
+          "default": "",
+          "type": "string"
+        },
+        "WorkingDir": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ContainerInspectState": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "ExitCode": {
+          "default": 0,
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        },
+        "FinishedAt": {
+          "default": "",
+          "type": "string"
+        },
+        "Running": {
+          "default": false,
+          "type": "boolean"
+        },
+        "StartedAt": {
+          "default": "",
+          "type": "string"
+        },
+        "Status": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "EmptyObject": {
+      "additionalProperties": false,
+      "default": {},
+      "type": "object"
+    },
+    "IPAM": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Config": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/IPAMConfig",
+                "default": {}
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Driver": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IPAMConfig": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Gateway": {
+          "default": "",
+          "type": "string"
+        },
+        "Subnet": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ImageConfig": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Cmd": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Entrypoint": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Env": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "ExposedPorts": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/EmptyObject",
+                "default": {}
+              },
+              "default": {},
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Labels": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "default": "",
+                "type": "string"
+              },
+              "default": {},
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "StopSignal": {
+          "default": "",
+          "type": "string"
+        },
+        "User": {
+          "default": "",
+          "type": "string"
+        },
+        "Volumes": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/EmptyObject",
+                "default": {}
+              },
+              "default": {},
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "WorkingDir": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ImageRootFS": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Layers": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Type": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InspectContainer": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Config": {
+          "$ref": "#/$defs/ContainerConfig",
+          "default": {}
+        },
+        "Created": {
+          "default": "",
+          "type": "string"
+        },
+        "HostConfig": {
+          "$ref": "#/$defs/InspectHostConfig",
+          "default": {}
+        },
+        "Id": {
+          "default": "",
+          "type": "string"
+        },
+        "Image": {
+          "default": "",
+          "type": "string"
+        },
+        "Labels": {
+          "additionalProperties": {
+            "default": "",
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "Mounts": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/InspectMount",
+            "default": {}
+          },
+          "type": "array"
+        },
+        "Name": {
+          "default": "",
+          "type": "string"
+        },
+        "NetworkSettings": {
+          "$ref": "#/$defs/InspectNetworkSettings",
+          "default": {}
+        },
+        "Ports": {
+          "additionalProperties": {
+            "default": [],
+            "items": {
+              "$ref": "#/$defs/InspectPortBinding",
+              "default": {}
+            },
+            "type": "array"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "State": {
+          "$ref": "#/$defs/ContainerInspectState",
+          "default": {}
+        }
+      },
+      "type": "object"
+    },
+    "InspectEndpointSettings": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Aliases": {
+          "default": [],
+          "items": {
+            "default": "",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "Gateway": {
+          "default": "",
+          "type": "string"
+        },
+        "IPAddress": {
+          "default": "",
+          "type": "string"
+        },
+        "IPPrefixLen": {
+          "default": 0,
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        },
+        "MacAddress": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InspectHostConfig": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Memory": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": -9223372036854775808,
+          "type": "integer"
+        },
+        "NanoCpus": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": -9223372036854775808,
+          "type": "integer"
+        },
+        "NetworkMode": {
+          "default": "",
+          "type": "string"
+        },
+        "Ulimits": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Ulimit",
+            "default": {}
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "InspectImage": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Architecture": {
+          "default": "",
+          "type": "string"
+        },
+        "Author": {
+          "default": "",
+          "type": "string"
+        },
+        "Comment": {
+          "default": "",
+          "type": "string"
+        },
+        "Config": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ImageConfig",
+              "default": {}
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Created": {
+          "default": "",
+          "type": "string"
+        },
+        "Id": {
+          "default": "",
+          "type": "string"
+        },
+        "Metadata": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "default": "",
+                "type": "string"
+              },
+              "default": {},
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Os": {
+          "default": "",
+          "type": "string"
+        },
+        "Parent": {
+          "default": "",
+          "type": "string"
+        },
+        "RepoDigests": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "RepoTags": {
+          "anyOf": [
+            {
+              "default": [],
+              "items": {
+                "default": "",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "RootFS": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ImageRootFS",
+              "default": {}
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "Size": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": -9223372036854775808,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "InspectMount": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Destination": {
+          "default": "",
+          "type": "string"
+        },
+        "ReadWrite": {
+          "default": false,
+          "type": "boolean"
+        },
+        "Source": {
+          "default": "",
+          "type": "string"
+        },
+        "Type": {
+          "default": "",
+          "description": "TODO: Support different mount types (plan9/VHD) when VHD volumes are implemented.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InspectNetworkSettings": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Networks": {
+          "additionalProperties": {
+            "$ref": "#/$defs/InspectEndpointSettings",
+            "default": {}
+          },
+          "default": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "InspectPortBinding": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "HostIp": {
+          "default": "",
+          "type": "string"
+        },
+        "HostPort": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InspectVolume": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "CreatedAt": {
+          "default": "",
+          "type": "string"
+        },
+        "Driver": {
+          "default": "",
+          "type": "string"
+        },
+        "DriverOpts": {
+          "additionalProperties": {
+            "default": "",
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "Labels": {
+          "additionalProperties": {
+            "default": "",
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "Name": {
+          "default": "",
+          "type": "string"
+        },
+        "Status": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "default": "",
+                "type": "string"
+              },
+              "default": {},
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "type": "object"
+    },
+    "Network": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Driver": {
+          "default": "",
+          "type": "string"
+        },
+        "IPAM": {
+          "$ref": "#/$defs/IPAM",
+          "default": {}
+        },
+        "Id": {
+          "default": "",
+          "type": "string"
+        },
+        "Internal": {
+          "default": false,
+          "type": "boolean"
+        },
+        "Labels": {
+          "additionalProperties": {
+            "default": "",
+            "type": "string"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "Name": {
+          "default": "",
+          "type": "string"
+        },
+        "Scope": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Ulimit": {
+      "additionalProperties": true,
+      "default": {},
+      "properties": {
+        "Hard": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": -9223372036854775808,
+          "type": "integer"
+        },
+        "Name": {
+          "default": "",
+          "type": "string"
+        },
+        "Soft": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": -9223372036854775808,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/mveril/wslc_schema_rs/schema/2.9.3/wslc_schema.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Generated from microsoft/WSL src/windows/inc/wslc_schema.h",
+  "title": "WSL container schema 2.9.3"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Driver": "bridge",
+    "IPAM": {
+      "Config": [{"Gateway": "10.241.0.1", "Subnet": "10.241.0.0/24"}],
+      "Driver": "default"
+    },
+    "Id": "f2043cbdc69d5ca1904de164080e1982440aea866051f02ec49135f014914ed7",
+    "Internal": true,
+    "Labels": {
+      "com.microsoft.wsl.network.managed": "true",
+      "purpose": "wslc-schema-ut"
+    },
+    "Name": "wslc-schema-ut-20260904",
+    "Options": null,
+    "Scope": "local"
+  }
+]

@@ -1,0 +1,35 @@
+name: Publish Release
+
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: crates-io
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Verify tag matches crate version
+        shell: bash
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          crate="$(cargo metadata --format-version 1 --no-deps | python3 -c 'import json,sys; print(next(p["version"] for p in json.load(sys.stdin)["packages"] if p["name"] == "wslc_schema_rs"))')"
+          test "$tag" = "$crate" || { echo "tag $tag does not match crate version $crate"; exit 1; }
+      - run: cargo test --workspace --all-features --locked
+      - run: cargo xtask check --upstream
+      - run: cargo publish -p wslc_schema_rs --dry-run --locked
+      - name: Publish to crates.io
+        run: cargo publish -p wslc_schema_rs --locked
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
