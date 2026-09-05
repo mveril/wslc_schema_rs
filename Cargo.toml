@@ -12,3 +12,10 @@ authors = ["Mickaël Véril <mika.veril@wanadoo.fr>"]
 description = "serde structures for wslc_schema"
 license = "Apache-2.0 OR MIT"
 repository = "https://github.com/mveril/wslc_schema_rs"
+
+[workspace.dependencies]
+anyhow = "1.0"
+hex = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.11"
